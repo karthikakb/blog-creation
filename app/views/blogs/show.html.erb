@@ -1,0 +1,31 @@
+<br><br><br>
+
+
+<h3>"<%= @blog.title %>"</h3>
+<h4>"<%= @blog.description %>"</h4>
+
+
+<%= form_for(@comment) do |f| %>
+<div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                  <%= f.text_field :comment, class:'form-control' %>
+                  <%= f.hidden_field :post_id %>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+        <% @comments.each do |comments| %>
+        <div class="media mb-4">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <%= comments.comment %>
+          </div>
+        </div>
+        <%end %>
+        <% end %>
+
+

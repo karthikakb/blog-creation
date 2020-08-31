@@ -1,0 +1,16 @@
+ <br><br><br>
+ <% @blogs.each do |blog| %>
+<div class="card mb-4">
+          
+          <div class="card-body">
+           
+            <h2 class="card-title"><%= blog.title %></h2>
+            <p class="card-text"><%= blog.description %></p>
+            <a href="/blogs/<%= blog.id %>" class="btn btn-primary">Show &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on January 1, 2020 by
+            <a href="#">Start Bootstrap</a>
+          </div>
+        </div>
+        <% end %>
