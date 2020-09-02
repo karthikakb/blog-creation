@@ -1,6 +1,13 @@
  <br><br><br>
  <% @blogs.each do |blog| %>
-<div class="card mb-4">
+   <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+<div class="card mb-4 fixed">
           
           <div class="card-body">
            
@@ -9,8 +16,11 @@
             <a href="/blogs/<%= blog.id %>" class="btn btn-primary">Show &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on January 1, 2020 by
-            <a href="#">Start Bootstrap</a>
+            Posted on <%=blog.created_at.strftime("%-b,%-d,%Y: %H:%M  %p") %> by
+            <a href="#"><%= User.find(blog.user_id).first_name %></a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
         <% end %>

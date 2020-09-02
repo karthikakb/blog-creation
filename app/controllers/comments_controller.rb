@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 		redirect_to blogs_path
 	end
 	def comment_params
-		params.require(:comment).permit(:comment, :post_id)
+		params.require(:comment).permit(:comment, :post_id, :user_id, :created_at)
 	end
 
 end
