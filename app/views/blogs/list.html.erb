@@ -13,8 +13,8 @@
             <a href="/blogs/<%= blog.id %>" class="btn btn-primary">Show &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on January 1, 2020 by
-            <a href="#">Start Bootstrap</a>
+            Posted on <%=blog.created_at.strftime("%-b,%-d,%Y: %H:%M  %p") %> by
+            <a href="#"><%= User.find(blog.user_id).first_name %></a>
           </div>
         </div>
         </div>
