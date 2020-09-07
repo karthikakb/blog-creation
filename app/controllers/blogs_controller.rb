@@ -5,9 +5,9 @@ class BlogsController < ApplicationController
 	end
 	def show
 		@blog=Blog.find(params[:id])
-		@comments = Comment.where(post_id: @blog.id)
+		@comments = @blog.comments
 		@user=User.find(current_user.id)
-		@comment=Comment.new(post_id: @blog.id, user_id:@user.id)
+		@comment=Comment.new(blog_id: @blog.id, user_id:@user.id)
 	end
 	def new
 		@user=User.find(current_user.id)

@@ -31,20 +31,20 @@
             <form>
               <div class="form-group">
                   <%= f.text_field :comment, class:'form-control' %>
-                  <%= f.hidden_field :post_id %>
+                  <%= f.hidden_field :blog_id %>
                   <%= f.hidden_field :user_id %>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
         </div>
-        <% @comments.each do |comments| %>
+        <% @comments.each do |comment| %>
         <div class="media mb-4">
           <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
           
           <div class="media-body">
-          	<h5 class="mt-0"><%= User.find(comments.user_id).first_name %></h5>
-            <%= comments.comment %>
+          	<h5 class="mt-0"><%= comment.user.first_name %></h5>
+            <%= comment.comment %>
           </div>
         </div>
         <%end %>
