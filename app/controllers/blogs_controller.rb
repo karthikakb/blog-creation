@@ -6,8 +6,11 @@ class BlogsController < ApplicationController
 	def show
 		@blog=Blog.find(params[:id])
 		@comments = @blog.comments
+		if user_signed_in?
 		@user=User.find(current_user.id)
 		@comment=Comment.new(blog_id: @blog.id, user_id:@user.id)
+	end
+
 	end
 	def new
 		@user=User.find(current_user.id)
