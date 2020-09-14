@@ -2,13 +2,17 @@ class BlogsController < ApplicationController
 	 before_action :authenticate_user!, except: [:index, :show, :home_page]
 	def index
 		@blogs =Blog.all
+		
+		
 	end
 	def show
 		@blog=Blog.find(params[:id])
 		@comments = @blog.comments
 		if user_signed_in?
+		@comments = @blog.comments
 		@user=User.find(current_user.id)
 		@comment=Comment.new(blog_id: @blog.id, user_id:@user.id)
+
 	end
 
 	end

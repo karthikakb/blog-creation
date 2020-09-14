@@ -7,5 +7,8 @@ resources :blogs do
   end
 end
 resources :comments
+resources :blogs do
+  resources :likes
+end
 root'blogs#index'
 end
