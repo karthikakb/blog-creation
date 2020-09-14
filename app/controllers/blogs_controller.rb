@@ -11,20 +11,21 @@ class BlogsController < ApplicationController
 		if user_signed_in?
 		@comments = @blog.comments
 		@user=User.find(current_user.id)
-		@comment=Comment.new(blog_id: @blog.id, user_id:@user.id)
-
+		@comment=Comment.new(blog_id: @blog.id, user_id:@user.id)	
+	end
 	end
 
-	end
 	def new
 		@user=User.find(current_user.id)
 		@blog =Blog.new(user_id: @user.id )
 		
 	end
+
 	def list
 		@user=User.find(current_user.id)
 		@blog=Blog.where(user_id: @user.id)
 	end
+
 	def create
 		@blog =Blog.create(blog_params)
 		if @blog.valid?
@@ -34,9 +35,11 @@ class BlogsController < ApplicationController
       render :new	  
 	end
 	end
+
 	def edit
 		@blog=Blog.find(params[:id])
 	end
+
 	def update
 		@blog = Blog.find(params[:id])
     @blog.update(blog_params)
@@ -47,6 +50,7 @@ class BlogsController < ApplicationController
       render :new	  
 	end
 	end
+	
 	private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog

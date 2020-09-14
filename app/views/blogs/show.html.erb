@@ -24,7 +24,7 @@
 
 
       <p class="lead"><%= @blog.description %></p>
-      <% if user_signed_in? %>
+      <% if current_user %>
         <%= form_for(@comment) do |f| %>
           <div class="card my-4">
             <h5 class="card-header">Leave a Comment:</h5>
@@ -40,6 +40,7 @@
             </div>
           </div>
         <% end %>
+       <% end  %>
       
       <% @comments.each do |comment| %>
         <div class="media mb-4">
@@ -49,7 +50,6 @@
             <%= comment.comment %>  
           </div>
         </div>
-      <%end %>
       <% end %>
     </div>
   </div>

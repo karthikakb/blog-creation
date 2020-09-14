@@ -1,10 +1,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 <br><br><br>
 <% @blogs.each do |blog| %>
 <!-- Page Content -->
+ 
 <div class="container">
   <div class="row">
     <!-- Blog Entries Column -->
@@ -18,33 +22,44 @@
         <div class="card-footer text-muted">
           Posted on <%=blog.created_at.strftime("%-b %-d,%Y: %H:%M  %p") %> by
           <a href="#"><%= blog.user.first_name %></a>
+          <% if current_user %>
           <% @user=User.find(current_user.id) %>
-           <% @already_liked =  Like.where(user_id: @user.id, blog_id:blog.id).exists? %>
+          <% @already_liked = Like.where(user_id: @user.id, blog_id:blog.id).exists? %>
           <% if @already_liked %>
-          <a href="/blogs/<%= blog.id %>/likes" class="btn btn-info btn-lg" value="Like" method="post" style="background-color: blue;" >
-            <span class="glyphicon glyphicon-thumbs-up"></span>
-            <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
+          <a href="/blogs/<%= blog.id %>/likes" value="Like" method="post" style='font-size:36px;color: blue;' >
+           <i class="fa fa-heart" style="font-size:38px;color:blue;" id="heart" >
+             <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
+           </i> 
           </a>
+
              <% flash.each do |type, msg| %>
               <div class="alert alert-info">
                  <%= msg %>
               </div>
             <% end %>
           <% else %>
-          <a href="/blogs/<%= blog.id %>/likes" class="btn btn-info btn-lg" value="Like" method="post" style="background-color: red;" >
-            <span class="glyphicon glyphicon-thumbs-up"></span>
+          <a href="/blogs/<%= blog.id %>/likes"  value="Like" method="post"  >
+            <i class="fa fa-heart-o" style="font-size:38px;color:blue;" id="heart" >
             <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
+          </i>
           </a>
+          <% end %>
+          <% else %>
+           <i class="fa fa-heart" style="font-size:38px;color:blue;" id="heart" >
+             <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
+           </i> 
           <% end %>
           <a href="/blogs/<%= blog.id %>">
             <i class='fas fa-comment-alt' style='font-size:36px;color: blue;'> 
               <%= blog.comments.count %> <%= (blog.comments.count) == 1 ? 'Comment' : 'Comments'%>
             </i> 
           </a>
+
         </div>
       </div>
     </div>
   </div>
 </div>
 <% end %>
+
 
