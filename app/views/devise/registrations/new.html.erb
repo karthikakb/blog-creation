@@ -3,18 +3,19 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="container center">
-
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <%= stylesheet_link_tag 'user.css' %>
+
  <% content_for :javascript_includes do %>
     <%= javascript_include_tag "validate" %>
     <% end %>
 
-<div id="login" style="height: 550px;">
+<div id="login" style="height: 750px;">
         <h3 class="text-center text-white pt-5">Login form</h3>
-        <div class="container" style="height: 550px;" >
+        <div class="container" style="height: 750px;" >
             <div id="login-row" class="row justify-content-center align-items-center" style="height: 550px;" >
-                <div id="login-column" class="col-md-6" style="height: 550px;">
-                    <div id="login-box" class="col-md-12" style="height: 550px;">
+                <div id="login-column" class="col-md-6" style="height: 750px;">
+                    <div id="login-box" class="col-md-12" style="height: 750px;">
                         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
@@ -42,13 +43,10 @@
                                 <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="Register">
                             </div>
-                            <div id="register-link" class="text-right">
-                                <a href="/users/sign_up" class="text-info">Register here</a>
-                                <br>
-                                <a href="/users/password/new" class="text-info">Forget password?</a>
-                            </div>
+                            <%= render "devise/shared/links" %>
+                         
                         <% end %>
-                        <%= render "devise/shared/links" %>
+                        
                         
                     </div>
                 </div>

@@ -10,5 +10,4 @@ Rails.application.config.assets.precompile += %w( user.css )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( heart.js )
 Rails.application.config.assets.precompile += %w( validate.js )
