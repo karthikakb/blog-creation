@@ -56,3 +56,5 @@ gem 'jquery-rails'
 gem 'devise'
 
 gem 'jquery-turbolinks'
+
+gem 'font-awesome-rails'

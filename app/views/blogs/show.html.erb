@@ -18,7 +18,7 @@
       <hr>
 
       <!-- Date/Time -->
-      <p>Posted on January 1, 2019 at 12:00 PM</p>
+      <p>Posted on <%=blog.created_at.strftime("%-b %-d,%Y: %H:%M  %p") %> </p>
       <p><%= @blog.likes.count %> <%= (@blog.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
 

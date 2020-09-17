@@ -1,4 +1,4 @@
-body {
+#body {
   margin: 0;
   padding: 0;
   background-color: #17a2b8;
@@ -17,3 +17,12 @@ body {
 #login .container #login-row #login-column #login-box #login-form #register-link {
   margin-top: -85px;
 }
+.error{
+  color: red;
+}
+
+.icon{
+  color: blue;
+  font-size:32px
+}
+

@@ -1,10 +1,6 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
+<%= stylesheet_link_tag 'user.css' %>
 <br><br><br>
 <% @blogs.each do |blog| %>
 <!-- Page Content -->
@@ -26,11 +22,11 @@
           <% @user=User.find(current_user.id) %>
           <% @already_liked = Like.where(user_id: @user.id, blog_id:blog.id).exists? %>
           <% if @already_liked %>
-          <a href="/blogs/<%= blog.id %>/likes" value="Like" method="post" style='font-size:36px;color: blue;' >
-           <i class="fa fa-heart" style="font-size:38px;color:blue;" id="heart" >
-             <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
-           </i> 
+          <a href="/blogs/<%= blog.id %>/likes" value="Like" method="post" style='font-size:32px;color: blue;' >
+            <%= fa_icon "heart", class:'icon' %> 
+            <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
           </a>
+            
 
              <% flash.each do |type, msg| %>
               <div class="alert alert-info">
@@ -38,22 +34,23 @@
               </div>
             <% end %>
           <% else %>
-          <a href="/blogs/<%= blog.id %>/likes"  value="Like" method="post"  >
-            <i class="fa fa-heart-o" style="font-size:38px;color:blue;" id="heart" >
-            <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
-          </i>
+          <a href="/blogs/<%= blog.id %>/likes"  value="Like" method="post" style="color: blue;font-size:32px;" >
+              <%= fa_icon "heart-o", class:'icon' %>
+              <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
           </a>
+        
           <% end %>
           <% else %>
-           <i class="fa fa-heart" style="font-size:38px;color:blue;" id="heart" >
+            <%= fa_icon "heart", class:'icon' %>
              <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
            </i> 
           <% end %>
-          <a href="/blogs/<%= blog.id %>">
-            <i class='fas fa-comment-alt' style='font-size:36px;color: blue;'> 
+          <a href="/blogs/<%= blog.id %>" style="color: blue;font-size:32px;">
+              <%= fa_icon "comment", class:'icon' %>
               <%= blog.comments.count %> <%= (blog.comments.count) == 1 ? 'Comment' : 'Comments'%>
             </i> 
           </a>
+         
 
         </div>
       </div>
