@@ -1,4 +1,10 @@
 <br><br><br>
+
+
+    <% content_for :javascript_includes do %>
+    <%= javascript_include_tag "heart" %>
+    <% end %>
+
 <div class="container">
 
   <div class="row">
@@ -18,10 +24,9 @@
       <hr>
 
       <!-- Date/Time -->
-      <p>Posted on <%=blog.created_at.strftime("%-b %-d,%Y: %H:%M  %p") %> </p>
+      <p>Posted on <%= @blog.created_at.strftime("%-b %-d,%Y: %H:%M  %p") %> </p>
       <p><%= @blog.likes.count %> <%= (@blog.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-
-
+       
 
       <p class="lead"><%= @blog.description %></p>
       <% if current_user %>

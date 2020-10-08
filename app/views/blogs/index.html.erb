@@ -22,7 +22,7 @@
           <% @user=User.find(current_user.id) %>
           <% @already_liked = Like.where(user_id: @user.id, blog_id:blog.id).exists? %>
           <% if @already_liked %>
-          <a href="/blogs/<%= blog.id %>/likes" value="Like" method="post" style='font-size:32px;color: blue;' >
+          <a href="/blogs/<%= blog.id %>/likes" value="Like" method="post" style='font-size:32px;color: blue;text-decoration: none;' >
             <%= fa_icon "heart", class:'icon' %> 
             <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
           </a>
@@ -34,7 +34,7 @@
               </div>
             <% end %>
           <% else %>
-          <a href="/blogs/<%= blog.id %>/likes"  value="Like" method="post" style="color: blue;font-size:32px;" >
+          <a href="/blogs/<%= blog.id %>/likes"  value="Like" method="post" style="color: blue;font-size:32px;text-decoration: none;" >
               <%= fa_icon "heart-o", class:'icon' %>
               <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
           </a>
@@ -45,7 +45,7 @@
              <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
            </i> 
           <% end %>
-          <a href="/blogs/<%= blog.id %>" style="color: blue;font-size:32px;">
+          <a href="/blogs/<%= blog.id %>" style="color: blue;font-size:32px;text-decoration: none;">
               <%= fa_icon "comment", class:'icon' %>
               <%= blog.comments.count %> <%= (blog.comments.count) == 1 ? 'Comment' : 'Comments'%>
             </i> 
