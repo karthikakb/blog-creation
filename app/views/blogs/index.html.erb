@@ -1,10 +1,11 @@
 
-
+<body style="background-color: #17a2b8">
 <%= stylesheet_link_tag 'user.css' %>
-<br><br><br>
+<br><br><br><br><br><br>
+
 <% @blogs.each do |blog| %>
 <!-- Page Content -->
- 
+
 <div class="container">
   <div class="row">
     <!-- Blog Entries Column -->
@@ -24,7 +25,7 @@
           <% if @already_liked %>
           <a href="/blogs/<%= blog.id %>/likes" value="Like" method="post" style='font-size:32px;color: blue;text-decoration: none;' >
             <%= fa_icon "heart", class:'icon' %> 
-            <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
+            <a href="#" style="color: #17a2b8;font-size:32px;text-decoration: none;"><%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%></a>
           </a>
             
 
@@ -34,7 +35,7 @@
               </div>
             <% end %>
           <% else %>
-          <a href="/blogs/<%= blog.id %>/likes"  value="Like" method="post" style="color: blue;font-size:32px;text-decoration: none;" >
+          <a href="/blogs/<%= blog.id %>/likes"  value="Like" method="post" style="color: #17a2b8;font-size:32px;text-decoration: none;" >
               <%= fa_icon "heart-o", class:'icon' %>
               <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
           </a>
@@ -42,10 +43,10 @@
           <% end %>
           <% else %>
             <%= fa_icon "heart", class:'icon' %>
-             <%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%>
+              <a href="#" style="color: #17a2b8;font-size:32px;text-decoration: none;"><%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%></a>
            </i> 
           <% end %>
-          <a href="/blogs/<%= blog.id %>" style="color: blue;font-size:32px;text-decoration: none;">
+          <a href="/blogs/<%= blog.id %>" style="color: #17a2b8;font-size:32px;text-decoration: none;">
               <%= fa_icon "comment", class:'icon' %>
               <%= blog.comments.count %> <%= (blog.comments.count) == 1 ? 'Comment' : 'Comments'%>
             </i> 
@@ -58,5 +59,6 @@
   </div>
 </div>
 <% end %>
+</body>
 
 
